@@ -2,16 +2,21 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Firebase Web Quickstart</title>
+        <title>Firebase Web Documents and Collections</title>
 
     </head>
     <body>
         <h1 id="bigOne">hh</h1>
+
+        <h1 id="hotDogOutput">Hot dog status:</h1>
+        <input type="textfield" id="lastestHotDogStatus"/>
+        <button id="saveButton">Save</button>
         
         <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.8.0/firestore.js"></script>
         <script type="text/javascript">
-
+        // https://www.youtube.com/watch?v=IfzpKHC6gZE
+            // Initialize Firebase
             var config = {
               apiKey: "AIzaSyCo3ZOn6BMPskoMm7ZiaSC3bMO0QyxgG4s",
               authDomain: "web-quick-start-66485.firebaseapp.com",
@@ -21,12 +26,10 @@
               messagingSenderId: "831562373541"
             };
             firebase.initializeApp(config);
-          
-              // zmiana tekstu headera h1 (pobieranie z bazy JSON 'text')
-              var bigOne = document.getElementById('bigOne');
-              var dbRef = firebase.database().ref().child('text');
-              dbRef.on('value', snap => bigOne.innerText = snap.val());
-              
+
+              // obsługa input-a
+              const output = document.getElementsByTagName("#lastestHotDogStatus");
+
           </script>        
     </body>
 </html>
