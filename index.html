@@ -6,7 +6,7 @@
 
     </head>
     <body>
-        <h1 id="bigOne">hh</h1>
+        <h1 id="bigOne"></h1>
         
         <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.8.0/firestore.js"></script>
@@ -24,7 +24,7 @@
           
               // zmiana tekstu headera h1 (pobieranie z bazy JSON 'text')
               var bigOne = document.getElementById('bigOne');
-              var dbRef = firebase.database().ref().child('text');
+              var dbRef = firebase.database().ref().child('text_2');
               dbRef.on('value', snap => bigOne.innerText = snap.val());
               
           </script>        

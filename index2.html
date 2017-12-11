@@ -2,11 +2,10 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Firebase Web Documents and Collections</title>
+        <title>Firebase Saving and Retrieving Data</title>
 
     </head>
     <body>
-        <h1 id="bigOne">hh</h1>
 
         <h1 id="hotDogOutput">Hot dog status:</h1>
         <input type="textfield" id="lastestHotDogStatus"/>
@@ -27,8 +26,23 @@
             };
             firebase.initializeApp(config);
 
-              // obsługa input-a
-              const output = document.getElementsByTagName("#lastestHotDogStatus");
+            var firestore = firebase.firestore();
+    
+            // przykład 1.
+            const docRef = firestore.doc("samples/sandwichData");
+            // przykład 2.
+            const docRef2 = firestore.collection("samples").doc("sandwichData");
+            const output = document.querySelector("#hotDogOutput");
+            const inputTextField = document.querySelector("#lastestHotDogStatus");
+            const saveButton = document.querySelector("#saveButton");
+
+            saveButton.addEventListener("click", function(){
+                const textToSave = inputTextField.value;
+                console.log("I am going to save " + textToSave + " to Firestore.");
+                docRef.set({
+                hotDogStatus: textToSave
+                });
+            })
 
           </script>        
     </body>
