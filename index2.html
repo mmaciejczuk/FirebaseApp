@@ -3,48 +3,45 @@
     <head>
         <meta charset="utf-8">
         <title>Firebase Saving and Retrieving Data</title>
-
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-firestore.js"></script>
     </head>
+    
     <body>
 
         <h1 id="hotDogOutput">Hot dog status:</h1>
         <input type="textfield" id="lastestHotDogStatus"/>
-        <button id="saveButton">Save</button>
-        
-        <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.8.0/firestore.js"></script>
-        <script type="text/javascript">
-        // https://www.youtube.com/watch?v=IfzpKHC6gZE
-            // Initialize Firebase
-            var config = {
-              apiKey: "AIzaSyCo3ZOn6BMPskoMm7ZiaSC3bMO0QyxgG4s",
-              authDomain: "web-quick-start-66485.firebaseapp.com",
-              databaseURL: "https://web-quick-start-66485.firebaseio.com",
-              projectId: "web-quick-start-66485",
-              storageBucket: "web-quick-start-66485.appspot.com",
-              messagingSenderId: "831562373541"
+        <button id="saveButton">Save</button>    
+        <script>
+             var config = {
+                apiKey: "AIzaSyCo3ZOn6BMPskoMm7ZiaSC3bMO0QyxgG4s",
+                authDomain: "web-quick-start-66485.firebaseapp.com",
+                databaseURL: "https://web-quick-start-66485.firebaseio.com",
+                projectId: "web-quick-start-66485",
+                storageBucket: "web-quick-start-66485.appspot.com",
+                messagingSenderId: "831562373541"
             };
             firebase.initializeApp(config);
 
             var firestore = firebase.firestore();
-    
             // przykład 1.
             const docRef = firestore.doc("samples/sandwichData");
             // przykład 2.
-            const docRef2 = firestore.collection("samples").doc("sandwichData");
+            //const docRef = firestore.collection("samples").doc("sandwichData");
             const output = document.querySelector("#hotDogOutput");
             const inputTextField = document.querySelector("#lastestHotDogStatus");
             const saveButton = document.querySelector("#saveButton");
 
-            saveButton.addEventListener("click", function(){
-                const textToSave = inputTextField.value;
-                console.log("I am going to save " + textToSave + " to Firestore.");
-                docRef.set({
-                hotDogStatus: textToSave
-                });
-            })
+           saveButton.addEventListener("click", function(){
+               const textToSave = inputTextField.value;
+               console.log("I am going to save " + textToSave + " to Firestore.");
+               docRef.set({
+               hotDogStatus: textToSave
+               }); 
+            });    
+        
+        </script>      
 
-          </script>        
     </body>
 </html>
 
