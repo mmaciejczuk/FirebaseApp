@@ -10,7 +10,10 @@
     <body>
 
         <h1 id="hotDogOutput">Hot dog status:</h1>
-        <input type="textfield" id="lastestHotDogStatus"/>
+        Key:
+        <input type="textfield" id="keyId"/>
+        Value:
+        <input type="textfield" id="valueId"/>
         <button id="saveButton">Save</button>    
         <script>
              var config = {
@@ -25,19 +28,27 @@
 
             var firestore = firebase.firestore();
             // przykład 1.
-            const docRef = firestore.doc("samples/sandwichData");
+            const docRefToDocument = firestore.doc("samples/mojDokument");
             // przykład 2.
             //const docRef = firestore.collection("samples").doc("sandwichData");
             const output = document.querySelector("#hotDogOutput");
-            const inputTextField = document.querySelector("#lastestHotDogStatus");
+            const inputKeyField = document.querySelector("#keyId");
+            const inputValueField = document.querySelector("#valueId");
             const saveButton = document.querySelector("#saveButton");
 
            saveButton.addEventListener("click", function(){
-               const textToSave = inputTextField.value;
-               console.log("I am going to save " + textToSave + " to Firestore.");
-               docRef.set({
-               hotDogStatus: textToSave
-               }); 
+               const keyToSave = inputKeyField.value;
+               const valueToSave = inputValueField.value;
+               console.log("I am going to save " + valueToSave + " to Firestore.");
+               docRefToDocument.set({
+                    keyToSave: valueToSave
+               })
+               .then(function(docRefToDocument) {
+                    console.log("Document written with ID: ");
+                    })
+                    .catch(function(error) {
+                        console.error("Error adding document: ", error);
+                }); 
             });    
         
         </script>      
