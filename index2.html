@@ -9,7 +9,7 @@
     
     <body>
 
-        <h1 id="hotDogOutput">Hot dog status:</h1>
+        <h1 id="output">Adding data to Firestore:</h1>
         Key:
         <input type="textfield" id="keyId"/>
         Value:
@@ -31,7 +31,7 @@
             const docRefToDocument = firestore.doc("samples/mojDokument");
             // przykład 2.
             //const docRef = firestore.collection("samples").doc("sandwichData");
-            const output = document.querySelector("#hotDogOutput");
+            const output = document.querySelector("#output");
             const inputKeyField = document.querySelector("#keyId");
             const inputValueField = document.querySelector("#valueId");
             const saveButton = document.querySelector("#saveButton");
